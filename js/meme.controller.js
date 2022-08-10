@@ -1,10 +1,27 @@
 'use strict'
+let elGalleryContainer = document.querySelector('.gallery-container')
+// let elMemeContainer = document.querySelector('.gallery-container')
+// let elMemeContainer = document.querySelector('.gallery-container')
+// let elMemeContainer = document.querySelector('.gallery-container')
 
-let gElCanvas
-let gCtx
+
 
 function init() {
-    gElCanvas = document.querySelector('#canvas')
-    gCtx = gElCanvas.getContext('2d')
-    console.log('ctx', gCtx)
+    console.log('Hello')
+    renderGallery(getGalleryDisplay())
+}
+
+
+function renderGallery(gallery) {
+    let strHTML = gallery.map(img => `
+    <img src="${img.url}"class="gallery-img gallery-img${img.id}" onclick="onImg(${img.id})"></img>
+    `)
+    elGalleryContainer.innerHTML = strHTML.join('')
+}
+
+
+function onImg(id) {
+    switchViews(id)
+
+
 }

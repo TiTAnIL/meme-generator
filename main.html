@@ -10,11 +10,30 @@
 </head>
 
 <body onload="init()">
-    
-    <div class="canvas-container">
-        <canvas id="canvas" height="300" width="300" onclick="draw(event)"></canvas>
-    </div>
+    <header>
+        <img src="/icons/LOGO.png"  class="header-logo"/>
+            <ul class="nav clean-list">
+                <li class="li-item"><a href="#">Gallery</a></li>
+                <li class="li-item"><a href="#">About</a></li>
+            </ul>
+        </div>
+    </header>
 
+    <section class="filters">filters</section>
+
+    <main class="gallery-container">
+    </main>
+
+    <section class="about-me">aboutme</section>
+
+    <footer class="main-footer">
+        <img src="/icons/LOGO.png"  class="footer-logo"/>
+    </footer>
+
+
+    <script src="js/storage.service.js"></script>
+    <script src="js/util.service.js"></script>
+    <script src="js/meme.service.js"></script>
     <script src="js/meme.controller.js"></script>
 </body>
 
