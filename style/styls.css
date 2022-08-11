@@ -72,7 +72,7 @@ body {
 /* editor */
 
 .editor-container {
-    display: grid;
+    display: none;
     background-color: var(--clr3);
     /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr; */
     grid-template-columns: repeat(11, 0fr);
