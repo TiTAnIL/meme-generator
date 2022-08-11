@@ -11,23 +11,47 @@
 
 <body onload="init()">
     <header>
-        <img src="/icons/LOGO.png"  class="header-logo"/>
-            <ul class="nav clean-list">
-                <li class="li-item"><a href="#">Gallery</a></li>
-                <li class="li-item"><a href="#">About</a></li>
-            </ul>
+        <img src="/icons/LOGO.png" class="header-logo" />
+        <ul class="nav clean-list">
+            <li class="li-item"><a href="#" onclick="switchViews()">Gallery</a></li>
+            <li class="li-item"><a href="#">About</a></li>
+        </ul>
         </div>
     </header>
 
     <section class="filters">filters</section>
 
-    <main class="gallery-container">
-    </main>
+    <main class="gallery-container"></main>
+
+    <section class="editor-container">
+        <canvas id="canvas" height="500px" width="500px"></canvas>
+        <form>
+            <input type="text" id="user-text" name="user-text">
+        </form>
+        <button class="editor-btn add"><img src="icons/add.png"></button>
+        <button class="editor-btn align-left"><img src="icons/align-to-left.png"> </button>
+        <button class="editor-btn align-right"><img src="icons/align-to-right.png"></button>
+        <button class="editor-btn align-center"><img src="icons/center-text-alignment.png"></button>
+        <button class="editor-btn decrease-font"><img src="icons/decrease font - icon.png"></button>
+        <button class="editor-btn increase-font"><img src="icons/increase font - icon.png"></button>
+        <button class="editor-btn paint-board"><img src="icons/paint-board-and-brush.png"></button>
+        <button class="editor-btn text-stroke"><img src="icons/text stroke.png"></button>
+        <button class="editor-btn trash"><img src="icons/trash.png"></button>
+        <button class="editor-btn double-arrows"><img src="icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+        <div class="dropdown">
+            <button onclick="dropdown(this)" class="dropbtn">Font</button>
+            <div id="my-drop-down" class="dropdown-content">
+                <button id="1" onclick="onFont(this)">font1</button>
+                <button id="2" onclick="onFont(this)">font2</button>
+                <button id="3" onclick="onFont(this)">font3</button>
+            </div>
+        </div>
+    </section>
 
     <section class="about-me">aboutme</section>
 
     <footer class="main-footer">
-        <img src="/icons/LOGO.png"  class="footer-logo"/>
+        <img src="icons/LOGO.png" class="footer-logo" />
     </footer>
 
 

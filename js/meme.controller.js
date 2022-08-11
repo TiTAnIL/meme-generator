@@ -1,10 +1,8 @@
 'use strict'
-let elGalleryContainer = document.querySelector('.gallery-container')
+const elGalleryContainer = document.querySelector('.gallery-container')
+const elEditorContainer = document.querySelector('.editor-container')
 // let elMemeContainer = document.querySelector('.gallery-container')
 // let elMemeContainer = document.querySelector('.gallery-container')
-// let elMemeContainer = document.querySelector('.gallery-container')
-
-
 
 function init() {
     console.log('Hello')
@@ -20,8 +18,11 @@ function renderGallery(gallery) {
 }
 
 
-function onImg(id) {
-    switchViews(id)
 
+
+function onImg(id) {
+    switchViews()
+    renderMemeEditor(id)
 
 }
+
