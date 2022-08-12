@@ -24,11 +24,22 @@
     <main class="gallery-container"></main>
 
     <section class="editor-container">
-        <canvas id="canvas" height="500px" width="500px"></canvas>
-        <form>
-            <input type="text" id="user-text" name="user-text">
+        <div class="canvas-container">
+                <canvas id="canvas" height="500px" width="500px"></canvas>
+                <canvas id="txt-canvas" height="200px" width="400px"></canvas>
+            </div>
+        <form onkeyup="onKey()" onsubmit="onSubmit(event)">
+            <input type="text" id="user-text" name="user-text" placeholder="lorem ipsum dorom">
         </form>
-        <button class="editor-btn add"><img src="icons/add.png"></button>
+        <div class="image-upload">
+            <label for="file-input">
+                <!-- <button><img src="icons/add.png" class="editor-btn" /></button> -->
+                <input type="file" class="file-input editor-btn" id="file-input" name="image"
+                    oninput="onImgInput(event)">
+            </label>
+        </div>
+
+
         <button class="editor-btn align-left"><img src="icons/align-to-left.png"> </button>
         <button class="editor-btn align-right"><img src="icons/align-to-right.png"></button>
         <button class="editor-btn align-center"><img src="icons/center-text-alignment.png"></button>
@@ -37,7 +48,8 @@
         <button class="editor-btn paint-board"><img src="icons/paint-board-and-brush.png"></button>
         <button class="editor-btn text-stroke"><img src="icons/text stroke.png"></button>
         <button class="editor-btn trash"><img src="icons/trash.png"></button>
-        <button class="editor-btn double-arrows"><img src="icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+        <button class="editor-btn double-arrows"><img
+                src="icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
         <div class="dropdown">
             <button onclick="dropdown(this)" class="dropbtn">Font</button>
             <div id="my-drop-down" class="dropdown-content">
@@ -54,7 +66,8 @@
         <img src="icons/LOGO.png" onclick="switchViews()" class="footer-logo" />
     </footer>
 
-
+    <script src="js/upload-service.js"></script>
+    <script src="js/canvas-service.js"></script>
     <script src="js/storage.service.js"></script>
     <script src="js/util.service.js"></script>
     <script src="js/meme.service.js"></script>

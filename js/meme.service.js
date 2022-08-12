@@ -3,8 +3,9 @@
 let gImgs
 const imgDB = 'imgDB'
 _createImgs()
-const gElCanvas = document.getElementById('canvas');
-const gCtx = gElCanvas.getContext('2d');
+
+
+
 
 function _createImg(keywords = []) {
     const id = makeId()
@@ -47,7 +48,6 @@ function _createImgs() {
 
 
 function switchViews() {
-    console.log(gImgs)
     // switch view between gallery to meme editor
     var isGallery = elEditorContainer.style.display === 'grid' ? true : false
     if (!isGallery) {
@@ -57,12 +57,10 @@ function switchViews() {
         elGalleryContainer.style.display = 'grid'
         elEditorContainer.style.display = 'none'
     }
-
 }
 
 
 function renderMemeEditor(id) {
-    console.log(gElCanvas.width, gElCanvas.height)
     const img = new Image()
     img.src = `meme-imgs/${id}.jpg` // ?? Y ${img.url} failing ??
     img.onload = () => {
@@ -93,3 +91,15 @@ window.onclick = function (event) {
     }
 }
 
+
+// function handleMouse(ev) {
+//     console.log('event type', ev)
+//     document.querySelector('.mouse h2').innerText = ev.type
+// }
+
+// function handleTouch(ev) {
+//     // ev.preventDefault()
+//     ev.stopPropagation()
+//     console.log('event type:', ev)
+//     document.querySelector('.touch h2').innerText = ev.type
+// }
