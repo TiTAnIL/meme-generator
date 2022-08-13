@@ -11,6 +11,7 @@ function ImgPath(id) {
     return `meme-imgs/${id}.jpg`
 }
 
+
 function isLetter(str) {
      if (str.length === 1 && str.match(/[a-z]/i))
         return true
@@ -29,3 +30,4 @@ function isWriteable(value) {
         value === 32) return true
             else return false
 }
+

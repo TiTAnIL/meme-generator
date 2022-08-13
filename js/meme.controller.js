@@ -1,7 +1,6 @@
 'use strict'
 const elGalleryContainer = document.querySelector('.gallery-container')
 const elEditorContainer = document.querySelector('.editor-container')
-let gElUserText
 
 
 function init() {
@@ -11,31 +10,68 @@ function init() {
 
 
 function renderGallery(gallery) {
-    let strHTML = gallery.map(img => `
+    const strHTML = gallery.map(img => `
     <img src="${img.url}"class="gallery-img gallery-img${img.id}" onclick="onImg(${img.id})"></img>
     `)
     elGalleryContainer.innerHTML = strHTML.join('')
 }
 
 
+function renderMeme(id) {
+    // getMeme()
+    const img = new Image()
+    img.src = `meme-imgs/${id}.jpg`
+    img.onload = () => {
+        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+    }
+}
+
+
+function renderText(txt) {
+    const elText = document.querySelector('.text-box')
+    const strHTML = gMeme.lines.map( line => `<div class="text-box box${}"></div>`)
+    elText.innerHTML = strHTML.join('')
+
+}
+
+
+function onTxt(el) {
+    saveText(el.value)
+    renderText(el.value)
+}
+
+
 function onImg(id) {
+    selectedMeme(id)
+    renderMeme(id)
     switchViews()
-    renderMemeEditor(id)
 }
 
 
-function onAdd() {
-    uploadImg()
+function onAddLine() {
+    gMeme.lines[gMeme.lines.length] = {
+        txt: 'lorem ipsum dolor',
+        size: 20,
+        align: 'left',
+        color: 'black'
+    }
+console.log(gMeme.lines)
 }
 
 
-function onKey() {
-    let text = document.querySelector('[name=user-text]').value
-    drawText(text)
+function onChangeLine() {
+    ChangeLine(getCurrLine())
 }
 
 
-function onSubmit(ev) {
-    ev.preventDefault()
-    // clearText()
-}
+// function onKey() {
+//     let text = document.querySelector('[name=user-text]').value
+//     drawText(text)
+// }
+
+
+// function onSubmit(ev) {
+//     ev.preventDefault()
+//     // clearText()
+// }
+

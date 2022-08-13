@@ -5,6 +5,18 @@ const imgDB = 'imgDB'
 _createImgs()
 
 
+let gMeme = {
+    selectedImgId: 0,
+    selectedLineIdx: 1,
+    lines: [
+        {
+            txt: 'lorem ipsum dolor',
+            size: 20,
+            align: 'left',
+            color: 'black'
+        }
+    ]
+}
 
 
 function _createImg(keywords = []) {
@@ -16,7 +28,6 @@ function _createImg(keywords = []) {
         keywords
     }
 }
-
 
 
 function _createImgs() {
@@ -60,17 +71,38 @@ function switchViews() {
 }
 
 
-function renderMemeEditor(id) {
-    const img = new Image()
-    img.src = `meme-imgs/${id}.jpg` // ?? Y ${img.url} failing ??
-    img.onload = () => {
-        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-    }
+function getMeme() {
+    return gMeme
 }
 
 
 function getGalleryDisplay() {
     return gImgs
+}
+
+
+function saveText(txt) {
+    gMeme.lines[gMeme.selectedLineIdx] = txt
+}
+
+
+function getTxt() {
+    return gMeme.lines[gMeme.selectedLineIdx]
+}
+
+
+// function getImgId() {
+//     return gImgs.selectedImgId
+// }
+
+
+function selectedMeme(id) {
+    gMeme.selectedImgId = id
+}
+
+
+function buildToCanvas() {
+    writeOnCanvas(gMeme.lines[gMeme.selectedLineIdx])
 }
 
 
@@ -90,6 +122,17 @@ window.onclick = function (event) {
         }
     }
 }
+
+
+function ChangeLine(currLine) {
+
+}
+
+function getCurrLine() {
+    return gMeme.selectedLineIdx
+}
+
+
 
 
 // function handleMouse(ev) {
