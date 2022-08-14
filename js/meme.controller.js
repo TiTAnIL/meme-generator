@@ -29,7 +29,7 @@ function renderMeme(id) {
 
 function renderText(txt) {
     const elText = document.querySelector('.text-box')
-    const strHTML = gMeme.lines.map( line => `<div class="text-box box${}"></div>`)
+    const strHTML = gMeme.lines.map( line => `<div class="text-box box">${line.txt}</div>`)
     elText.innerHTML = strHTML.join('')
 
 }
