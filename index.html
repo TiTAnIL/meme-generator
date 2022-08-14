@@ -11,9 +11,12 @@
 
 <body onload="init()">
     <header>
-        <img src="icons/LOGO.png" onclick="switchViews()" class="header-logo" />
+        <img src="icons/LOGO.png" onclick="switchViews()"
+        class="header-logo" />
         <ul class="nav clean-list">
-            <li class="li-item"><a href="#" onclick="switchViews()">Gallery</a></li>
+            <li class="li-item"><a href="#" onclick="switchViews()">
+                Gallery</a>
+            </li>
             <li class="li-item"><a href="#">About</a></li>
         </ul>
         </div>
@@ -29,7 +32,8 @@
             <div class="text-box"></div>
         </div>
 
-        <input type="textarea" id="user-text" name="user-text" placeholder="lorem ipsum dorom" cols="25"
+        <input type="textarea" id="user-text" name="user-text"
+            placeholder="lorem ipsum dorom" cols="25"
             class="text-input" onkeyup="onTxt(this)">
 
         <button class="editor-btn add-line" onclick="onAddLine()">
@@ -60,15 +64,16 @@
             <img src="icons/trash.png"></button>
 
         <button class="editor-btn double-arrows">
-            <img src="icons/up-and-down-opposite-double-arrows-side-by-side.png" onclick="onChangeLine()"></button>
+            <img src="icons/up-and-down-opposite-double-arrows-side-by-side.png"
+            onclick="onChangeLine()"></button>
 
         <div class="dropdown">
             <button onclick="dropdown(this)" class="dropbtn">Font</button>
 
             <div id="my-drop-down" class="dropdown-content">
-                <button id="1" onclick="onFont(this)">font1</button>
-                <button id="2" onclick="onFont(this)">font2</button>
-                <button id="3" onclick="onFont(this)">font3</button>
+                <button id="1" onclick="onChoiceFont(this)">Impact</button>
+                <button id="2" onclick="onChoiceFont(this)">Ubuntu</button>
+                <button id="3" onclick="onChoiceFont(this)">PlayFair</button>
             </div>
         </div>
     </section>
