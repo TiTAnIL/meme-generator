@@ -2,18 +2,20 @@
 
 let gImgs
 const imgDB = 'imgDB'
+const contentDB = 'contentDB'
 _createImgs()
 
 
 let gMeme = {
     selectedImgId: 0,
-    selectedLineIdx: 1,
+    selectedLineIdx: 0,
     lines: [
         {
             txt: 'lorem ipsum dolor',
             size: 20,
             align: 'left',
-            color: 'black'
+            color: 'black',
+            font: 'impact'
         }
     ]
 }
@@ -82,13 +84,16 @@ function getGalleryDisplay() {
 
 
 function saveText(txt) {
-    gMeme.lines[gMeme.selectedLineIdx] = txt
+    gMeme.lines[gMeme.selectedLineIdx]['txt'] = txt
+    saveMemeToStorage()
 }
 
 
 function getTxt() {
-    return gMeme.lines[gMeme.selectedLineIdx]
+    return gMeme.lines[gMeme.selectedLineIdx]['txt']
 }
+
+
 
 
 // function getImgId() {
@@ -124,12 +129,43 @@ window.onclick = function (event) {
 }
 
 
-function ChangeLine(currLine) {
-
+function ChangeLine() {
+    const currLine = getCurrLine()
+    console.log(currLine)
+    //if (getCurrLine() +1 >= gMeme.lines.length)
+    
 }
+
 
 function getCurrLine() {
     return gMeme.selectedLineIdx
+}
+
+
+function setFont(id) {
+    switch (id) {
+        case '1':
+            gMeme.font = 'impact'
+        case '2':
+            gMeme.font =  'ubuntu'
+        case '3':
+            gMeme.font =  'playfair'
+    }
+    saveMemeToStorage()
+}
+
+
+function saveMemeToStorage() {
+    saveToStorage(memeDB, gMeme)
+}
+
+function saveImgToStorage() {
+    saveToStorage(imgDB, gImgs)
+}
+
+
+function getFromStorage(key) {
+    return key
 }
 
 

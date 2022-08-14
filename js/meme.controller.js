@@ -28,10 +28,10 @@ function renderMeme(id) {
 
 
 function renderText(txt) {
+    console.log(txt)
     const elText = document.querySelector('.text-box')
     const strHTML = gMeme.lines.map( line => `<div class="text-box box">${line.txt}</div>`)
     elText.innerHTML = strHTML.join('')
-
 }
 
 
@@ -59,8 +59,13 @@ console.log(gMeme.lines)
 }
 
 
+function onChoiceFont(ev) {
+    setFont(ev.id)
+}
+
+
 function onChangeLine() {
-    ChangeLine(getCurrLine())
+    ChangeLine()
 }
 
 
