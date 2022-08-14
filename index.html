@@ -11,11 +11,10 @@
 
 <body onload="init()">
     <header>
-        <img src="icons/LOGO.png" onclick="switchViews()"
-        class="header-logo" />
+        <img src="icons/LOGO.png" onclick="switchViews()" class="header-logo" />
         <ul class="nav clean-list">
             <li class="li-item"><a href="#" onclick="switchViews()">
-                Gallery</a>
+                    Gallery</a>
             </li>
             <li class="li-item"><a href="#">About</a></li>
         </ul>
@@ -32,26 +31,25 @@
             <div class="text-box"></div>
         </div>
 
-        <input type="textarea" id="user-text" name="user-text"
-            placeholder="lorem ipsum dorom" cols="25"
+        <input type="textarea" id="user-text" name="user-text" placeholder="lorem ipsum dolor" cols="25"
             class="text-input" onkeyup="onTxt(this)">
 
         <button class="editor-btn add-line" onclick="onAddLine()">
             <img src="icons/add.png"></button>
 
-        <button class="editor-btn align-left">
+        <button class="editor-btn align-left" onclick="setTextAligment('left')">
             <img src="icons/align-to-left.png"></button>
 
-        <button class="editor-btn align-right">
-            <img src="icons/align-to-right.png"></button>
-
-        <button class="editor-btn align-center">
+        <button class="editor-btn align-center" onclick="setTextAligment('center')">
             <img src="icons/center-text-alignment.png"></button>
 
-        <button class="editor-btn decrease-font">
+        <button class="editor-btn align-right" onclick="setTextAligment('right')">
+            <img src="icons/align-to-right.png"></button>
+            
+        <button class="editor-btn decrease-font" onclick="setFontSize('-')">
             <img src="icons/decrease font - icon.png"></button>
 
-        <button class="editor-btn increase-font">
+        <button class="editor-btn increase-font" onclick="setFontSize('+')">
             <img src="icons/increase font - icon.png"></button>
 
         <button class="editor-btn paint-board">
@@ -64,8 +62,7 @@
             <img src="icons/trash.png"></button>
 
         <button class="editor-btn double-arrows">
-            <img src="icons/up-and-down-opposite-double-arrows-side-by-side.png"
-            onclick="onChangeLine()"></button>
+            <img src="icons/up-and-down-opposite-double-arrows-side-by-side.png" onclick="onChangeLine()"></button>
 
         <div class="dropdown">
             <button onclick="dropdown(this)" class="dropbtn">Font</button>

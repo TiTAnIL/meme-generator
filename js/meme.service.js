@@ -1,9 +1,12 @@
 'use strict'
 
-let gImgs
 const imgDB = 'imgDB'
 const contentDB = 'contentDB'
-_createImgs()
+let gImgs = false
+
+if (!gImgs || !gImgs.length) {
+    _createImgs()
+}
 
 
 let gMeme = {
@@ -33,30 +36,28 @@ function _createImg(keywords = []) {
 
 
 function _createImgs() {
-    let imgs = gImgs
-    if (!imgs || !imgs.length) {
-        const IMGS = [
-            _createImg(['politics', 'crazy', 'celeb']),
-            _createImg(['animal', 'cute']),
-            _createImg(['funny', 'animal', 'cute']),
-            _createImg(['animal', 'cute']),
-            _createImg(['baby', 'cute']),
-            _createImg(['crazy', 'aliens', 'sarcastic']),
-            _createImg(['baby', 'cute']),
-            _createImg(['funny']),
-            _createImg(['baby', 'funny']),
-            _createImg(['politics', 'sarcastic', 'funny', 'celeb']),
-            _createImg(['politics', 'sarcastic']),
-            _createImg(['funny', 'sarcastic']),
-            _createImg(['movies', 'celeb']),
-            _createImg(['movies', 'celeb']),
-            _createImg(['movies', 'celeb']),
-            _createImg(['movies', 'celeb']),
-            _createImg(['politics', 'sarcastic', 'celeb']),
-            _createImg(['movies', 'sarcastic']),
-        ]
-        gImgs = IMGS
-    }
+    const imgs = [
+        _createImg(['politics', 'crazy', 'celeb']),
+        _createImg(['animal', 'cute']),
+        _createImg(['funny', 'animal', 'cute']),
+        _createImg(['animal', 'cute']),
+        _createImg(['baby', 'cute']),
+        _createImg(['crazy', 'aliens', 'sarcastic']),
+        _createImg(['baby', 'cute']),
+        _createImg(['funny']),
+        _createImg(['baby', 'funny']),
+        _createImg(['politics', 'sarcastic', 'funny', 'celeb']),
+        _createImg(['politics', 'sarcastic']),
+        _createImg(['funny', 'sarcastic']),
+        _createImg(['movies', 'celeb']),
+        _createImg(['movies', 'celeb']),
+        _createImg(['movies', 'celeb']),
+        _createImg(['movies', 'celeb']),
+        _createImg(['politics', 'sarcastic', 'celeb']),
+        _createImg(['movies', 'sarcastic']),
+    ]
+    gImgs = true
+    saveImgsToStorage(imgs)
 }
 
 
@@ -78,8 +79,8 @@ function getMeme() {
 }
 
 
-function getGalleryDisplay() {
-    return gImgs
+function getGallery() {
+    return loadFromStorage(imgDB)
 }
 
 
@@ -92,13 +93,6 @@ function saveText(txt) {
 function getTxt() {
     return gMeme.lines[gMeme.selectedLineIdx]['txt']
 }
-
-
-
-
-// function getImgId() {
-//     return gImgs.selectedImgId
-// }
 
 
 function selectedMeme(id) {
@@ -131,44 +125,77 @@ window.onclick = function (event) {
 
 function ChangeLine() {
     const currLine = getCurrLine()
-    console.log(currLine)
-    //if (getCurrLine() +1 >= gMeme.lines.length)
     
 }
 
 
 function getCurrLine() {
-    return gMeme.selectedLineIdx
+    return gMeme.lines[gMeme.selectedLineIdx]
 }
 
 
 function setFont(id) {
     switch (id) {
         case '1':
-            gMeme.font = 'impact'
+            getCurrLine().font = 'impact'
+            break
         case '2':
-            gMeme.font =  'ubuntu'
+            getCurrLine().font = 'ubuntu'
+            break
         case '3':
-            gMeme.font =  'playfair'
+            getCurrLine().font = 'playfair'
+            break
     }
     saveMemeToStorage()
+    renderText()
+}
+
+
+function getFont() {
+    return getCurrLine().font
+}
+
+
+function getFontSize() {
+    return getCurrLine().size
+}
+
+
+function getFontColor() {
+    return getCurrLine().color
+}
+
+
+function getAlignment() {
+    return getCurrLine.align
+}
+
+
+function getContent() {
+    return loadFromStorage(contentDB)
 }
 
 
 function saveMemeToStorage() {
-    saveToStorage(memeDB, gMeme)
-}
-
-function saveImgToStorage() {
-    saveToStorage(imgDB, gImgs)
+    saveToStorage(contentDB, gMeme)
 }
 
 
-function getFromStorage(key) {
-    return key
+function saveImgsToStorage(imgs) {
+    saveToStorage(imgDB, imgs)
 }
 
 
+function setFontSize(operator) {
+    operator === '-' ? getCurrLine().size-- : getCurrLine().size++
+    renderText()
+}
+
+
+function setTextAligment(align) {
+    getCurrLine.align = align
+    renderText()
+}
 
 
 // function handleMouse(ev) {
@@ -182,3 +209,5 @@ function getFromStorage(key) {
 //     console.log('event type:', ev)
 //     document.querySelector('.touch h2').innerText = ev.type
 // }
+
+

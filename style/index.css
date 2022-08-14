@@ -37,6 +37,10 @@
     box-sizing: border-box;
 }
 
+.decrease-font{
+    background-color: aqua;
+}
+
 body {
     height: 95vh;
 }
@@ -196,7 +200,10 @@ body {
     width: 500px;
     height: 100px;
     margin-top: -30rem;
-    font-size: 40px;
+}
+
+.text-box {
+    font-size: 20px;
 }
 
 /* footer */

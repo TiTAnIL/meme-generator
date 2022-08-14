@@ -5,7 +5,7 @@ const elEditorContainer = document.querySelector('.editor-container')
 
 function init() {
     console.log('Hello')
-    renderGallery(getGalleryDisplay())
+    renderGallery(getGallery())
 }
 
 
@@ -18,26 +18,29 @@ function renderGallery(gallery) {
 
 
 function renderMeme(id) {
-    // getMeme()
     const img = new Image()
     img.src = `meme-imgs/${id}.jpg`
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
     }
+    renderText()
 }
 
 
-function renderText(txt) {
-    console.log(txt)
+function renderText() {
     const elText = document.querySelector('.text-box')
+    elText.style.fontSize = getFontSize()
+    elText.style.fontFamily = getFont()
+    elText.style.textAlign = getAlignment()
     const strHTML = gMeme.lines.map( line => `<div class="text-box box">${line.txt}</div>`)
     elText.innerHTML = strHTML.join('')
+    console.log('dsfds')
 }
 
 
 function onTxt(el) {
     saveText(el.value)
-    renderText(el.value)
+    renderText()
 }
 
 

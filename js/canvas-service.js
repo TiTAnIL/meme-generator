@@ -4,16 +4,16 @@ const gElCanvas = document.getElementById('canvas')
 const gCtx = gElCanvas.getContext('2d')
 
 
-function writeOnCanvas(txt, x = gElCanvas.width / 2, y = 30) {
+function writeOnCanvas(x = gElCanvas.width / 2, y = 30) {
     x += 5
     // gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
     gCtx.beginPath()
-    gCtx.textAlign = "center" // getAlignment()
+    gCtx.textAlign = getAlignment()
     gCtx.lineWidth = 1; 
-    // gCtx.fillStyle = getColor()
-    gCtx.font = '40px david'; // getSize() getFont()
-    gCtx.fillText(txt, x, y);
-    gCtx.strokeText(txt, x, y);
+    gCtx.fillStyle = getFontColor
+    gCtx.font = getFontSize(), getFont()
+    gCtx.fillText(getTxt(), x, y);
+    gCtx.strokeText(getTxt(), x, y);
     gCtx.closePath()
 }
 
